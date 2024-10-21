@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+                <RollingFile name="MainLog" fileName="/tmp/cswp/logs/201920920/JW-P1.log"
+                     filePattern="/tmp/cswp/logs/201920920/JW-P1-%d{yyyy-MM-dd-HH-mm}.log.gz">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+                <SizeBasedTriggeringPolicy size="10B" />
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+        </RollingFile>
+
+                <RollingFile name="InfoLog" fileName="/tmp/cswp/logs/201920920/JW-P1_info.log"
+                     filePattern="/tmp/cswp/logs/201920920/JW-P1_info-%d{yyyy-MM-dd}.log.gz">
+            <PatternLayout>
+                <Pattern>%d{yyyy-MM-dd HH:mm:ss} [%t] %-5level %logger{36} - %msg%n</Pattern>
+            </PatternLayout>
+            <Policies>
+                <TimeBasedTriggeringPolicy />
+            </Policies>
+            <DefaultRolloverStrategy max="5" />
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+                <Logger name="kr.ac.kku.cs.wp.JW-P1" level="trace" additivity="false">
+            <AppenderRef ref="MainLog" />
+        </Logger>
+
+                <Root level="fatal">
+            <AppenderRef ref="MainLog" />
+        </Root>
+
+                <Logger name="kr.ac.kku.cs.wp.JW-P1" level="info" additivity="false">
+            <AppenderRef ref="InfoLog" />
+        </Logger>
+    </Loggers>
+</Configuration>
+
